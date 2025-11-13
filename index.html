@@ -161,6 +161,7 @@
       aspect-ratio: 3/4;
       min-height: 400px;
       position: relative;
+      display: block;
     }
     .project-card:hover {
       transform: translateY(-15px);
@@ -182,10 +183,6 @@
     }
     .project-title {
       display: none;
-      position: absolute;
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
       color: #fff;
       font-size: 1rem;
       font-weight: 500;
@@ -359,8 +356,9 @@
       .hero { height: auto; max-height: none; min-height: 0; }
       .hero-image { height: auto; object-fit: contain; }
       .gallery { grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 25px; }
-      .project-card { min-height: 0; aspect-ratio: 3/4; }
-      .project-title { display: block; }
+      .project-card { min-height: 0; aspect-ratio: auto; height: auto; overflow: visible; padding-top: 0; }
+      .main-photo { height: auto; aspect-ratio: 3/4; }
+      .project-title { display: block; position: static; transform: none; left: auto; bottom: auto; margin-bottom: 10px; }
       .section-title { font-size: 1.6rem; margin: 25px 0 10px; }
       .section-description { font-size: 1.0rem; margin-bottom: 10px; line-height: 1.4; }
       .services-list { margin: 12px 0; }
@@ -412,28 +410,28 @@
     <h2 class="section-title">Portfolio</h2>
     <div class="gallery">
       <div class="project-card" data-images="photo/style.jpg,photo/style1.jpg,photo/style2.jpg">
-        <img class="main-photo" src="photo/style.jpg" alt="Project 1">
         <div class="project-title">Projekts 1</div>
+        <img class="main-photo" src="photo/style.jpg" alt="Project 1">
       </div>
        <div class="project-card" data-images="photo/rent.jpg,photo/rent1.jpg,photo/rent2.jpg">
-        <img class="main-photo" src="photo/rent.jpg" alt="Project 2">
         <div class="project-title">Projekts 2</div>
+        <img class="main-photo" src="photo/rent.jpg" alt="Project 2">
       </div>
        <div class="project-card" data-images="photo/wrap.jpg,photo/wrap1.jpg,photo/wrap2.jpg">
-        <img class="main-photo" src="photo/wrap.jpg" alt="Project 3">
         <div class="project-title">Projekts 3</div>
+        <img class="main-photo" src="photo/wrap.jpg" alt="Project 3">
       </div>
        <div class="project-card" data-images="photo/honey.jpg,photo/honey1.jpg,photo/honey2.jpg">
-        <img class="main-photo" src="photo/honey.jpg" alt="Project 4">
         <div class="project-title">Projekts 4</div>
+        <img class="main-photo" src="photo/honey.jpg" alt="Project 4">
       </div>
       <div class="project-card" data-images="photo/red.jpg,photo/red1.jpg,photo/red2.jpg">
-        <img class="main-photo" src="photo/red.jpg" alt="Project 5">
         <div class="project-title">Projekts 5</div>
+        <img class="main-photo" src="photo/red.jpg" alt="Project 5">
       </div>
        <div class="project-card" data-images="photo/gala.jpg,photo/gala1.jpg,photo/gala2.jpg">
-        <img class="main-photo" src="photo/gala.jpg" alt="Project 6">
         <div class="project-title">Projekts 6</div>
+        <img class="main-photo" src="photo/gala.jpg" alt="Project 6">
       </div>
      
     </div>
