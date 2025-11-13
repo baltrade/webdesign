@@ -105,16 +105,17 @@ header {
 
 /* ======================= Мобильная адаптация ======================= */
 @media(max-width:576px){
-  body, .gallery-section, .footer { padding-left:0 !important; padding-right:0 !important; }
+  body, .gallery-section, .footer { padding-left:10px !important; padding-right:10px !important; }
+
   header { flex-direction: row; justify-content: space-between; align-items: center; height: auto; padding: 8px 12px; }
   .logo-img { max-width:120px; height:40px; }
   .lang-icon { gap:6px; }
   .hamburger { width:28px; height:20px; gap:4px; z-index:2200; }
   .hamburger span { height:3px; }
 
-  /* Мобильное меню открыто по умолчанию */
+  /* Мобильное меню скрыто по умолчанию */
   #submenuContainer {
-    right:0;
+    right:-100%;  /* скрыто за экраном */
     position:fixed;
     top:0;
     width:80%;
@@ -124,12 +125,12 @@ header {
     z-index:2000;
     border-radius:0;
     overflow-y:auto;
-    display:block;
-    transition:none;
+    transition:right 0.3s ease;
   }
+  #submenuContainer.active { right:0; } /* при клике — показываем */
 
   .menu-item { padding:12px 0; border-bottom:1px solid #333; color:#D8D8D5; }
-  .submenu { display:block; margin-top:6px; font-size:0.95rem; padding-left:12px; }
+  .submenu { display:none; margin-top:6px; font-size:0.95rem; padding-left:12px; }
   .pakalpojumi-submenu .pakalpojumi-list li { font-size:0.9rem; margin-bottom:6px; }
 
   .modal { z-index:2500; }
@@ -143,6 +144,7 @@ header {
   .footer .contact a { font-size:clamp(0.75rem,4vw,0.9rem); }
   .footer .contact i { font-size:clamp(0.85rem,4vw,1rem); }
 }
+
 
 @media(max-width:400px){
   .hero { height:50vw; max-height:40vh; min-height:180px; }
@@ -285,12 +287,18 @@ if(window.innerWidth <= 576){
   pakalpojumiSub.style.display='block';
 }
 
+// Гамбургер
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
-  if(window.innerWidth > 576){
+  if(window.innerWidth <= 576){
+    submenuContainer.classList.toggle('active'); // показываем/скрываем подменю
+    kontaktiSub.style.display='none';
+    pakalpojumiSub.style.display='none';
+  } else {
     submenuContainer.style.display = submenuContainer.style.display==='block'?'none':'block';
   }
 });
+
 
 kontaktiBtn.addEventListener('click', () => {
   const isVisible = kontaktiSub.style.display==='block';
@@ -370,3 +378,4 @@ window.onclick=e=>{ if(e.target===modal) closeBtn.click(); }
 </script>
 </body>
 </html>
+
