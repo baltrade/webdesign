@@ -125,49 +125,80 @@
 
 @media (max-width: 576px) {
   /* Шапка */
-  header { 
+  header {
     flex-direction: row; /* оставляем в одну строку */
     justify-content: space-between;
     align-items: center;
     height: auto;
-    padding: 8px 12px; /* уменьшаем отступы */
+    padding: 8px 12px;
+    background: #121315;
   }
 
   /* Логотип */
   .logo-img {
-    width: auto;         /* сохраняем пропорции */
-    max-width: 120px;    /* логотип меньше */
-    height: 40px;        /* уменьшаем высоту */
+    width: auto;
+    max-width: 120px; /* уменьшенный размер */
+    height: 40px;
     object-fit: contain;
   }
 
   /* Языки */
-  .lang-icon { margin-top: 0; }
+  .lang-icon {
+    margin-top: 0;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--blue);
+  }
 
-  /* Гамбургер и подменю */
-  #submenuContainer { 
+  /* Гамбургер */
+  .hamburger {
+    width: 28px;
+    height: 20px;
+    gap: 4px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .hamburger span {
+    height: 3px;
+    background: var(--contact-color);
+    transition: all 0.3s ease;
+  }
+  .hamburger.active span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  .hamburger.active span:nth-child(2) { opacity: 0; }
+  .hamburger.active span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* Подменю */
+  #submenuContainer {
     position: fixed;
     top: 0;
     right: 0;
     width: 80%;
     height: 100%;
-    padding: 16px;
+    padding: 20px;
     background: #121315;
     z-index: 999;
     border-radius: 0;
     display: none;
     overflow-y: auto;
   }
-  .hamburger.active + #submenuContainer { display: block; }
+  .hamburger.active + #submenuContainer {
+    display: block;
+  }
+  .menu-item { cursor: pointer; font-weight: 500; padding: 8px 0; color: #D8D8D5; }
+  .submenu { display: none; margin-top: 6px; font-size: 0.9rem; }
+  .submenu a { color: #ccc; text-decoration: none; display: block; margin: 4px 0; }
+  .submenu a:hover { color: var(--blue); }
 
-  /* Галерея и секции */
-  .gallery-section { padding: 16px 12px 32px; } /* уменьшаем padding */
-  .gallery { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; } /* одна колонка */
+  /* Галерея и описание */
+  .gallery-section { padding: 16px 12px 32px; }
+  .gallery { grid-template-columns: 1fr; gap: 16px; margin-top: 24px; }
   .section-title { font-size: 1.6rem; margin: 24px 0 12px; }
   .section-description { font-size: 1rem; line-height: 1.4; margin: 0 0 12px 0; }
   .services-list li { font-size: 0.95rem; }
-  .submenu { font-size: 0.85rem; }
-  .pakalpojumi-submenu .pakalpojumi-list li { font-size: 0.85rem; }
+  .pakalpojumi-submenu .pakalpojumi-list li { font-size: 0.9rem; }
 
   /* Hero */
   .hero { height: 45vw; max-height: 50vh; min-height: 180px; }
@@ -182,7 +213,6 @@
   .dots-container { gap: 6px; }
   .dot { width: 10px; height: 10px; }
 }
-
 
 @media(max-width:400px){
   .hero { height:50vw; max-height:40vh; min-height:180px; }
@@ -387,4 +417,5 @@
 </script>
 </body>
 </html>
+
 
