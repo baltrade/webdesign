@@ -16,6 +16,7 @@
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Montserrat', sans-serif; background:var(--bg); color:var(--text); }
 
+/* HEADER */
 header {
   position: relative;
   z-index: 100;
@@ -28,7 +29,6 @@ header {
   backdrop-filter: blur(12px);
 }
 .logo-img { height:78px; max-width:320px; object-fit:contain; filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3)); }
-
 .lang-icon { display:flex; align-items:center; gap:6px; cursor:pointer; position:relative; color:var(--blue);}
 .lang-icon i { font-size:1.4rem; }
 .lang-dropdown { display:none; position:absolute; top:30px; left:0; background:#1c1d1f; border:1px solid #333; border-radius:8px; overflow:hidden; z-index:200;}
@@ -59,13 +59,12 @@ header {
 .submenu { display:none; margin-top:6px; font-size:0.95rem; }
 .submenu a { color:#ccc; text-decoration:none; display:block; margin:4px 0;}
 .submenu a:hover { color:var(--blue); }
-
 .pakalpojumi-submenu { font-size: 0.95rem; line-height: 1.35; padding-left: 0; }
 .pakalpojumi-submenu .pakalpojumi-list li { font-size: 0.95rem; margin-bottom: 6px; }
 
 /* HERO */
-.hero { height:56vw; max-height:70vh; min-height:300px; overflow:hidden; position:relative; background:#000; }
-.hero-image { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
+.hero { height:56vw; max-height:70vh; min-height:300px; overflow:hidden; position:relative; background:#000; margin:0; padding:0; }
+.hero-image { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
 
 /* GALLERY SECTION */
 .gallery-section { padding:20px 40px 40px; background:#28292B; }
@@ -106,17 +105,31 @@ header {
 
 /* ======================= Мобильная адаптация ======================= */
 @media(max-width:576px){
+  body, .gallery-section, .footer { padding-left:0 !important; padding-right:0 !important; }
   header { flex-direction: row; justify-content: space-between; align-items: center; height: auto; padding: 8px 12px; }
   .logo-img { max-width:120px; height:40px; }
   .lang-icon { gap:6px; }
   .hamburger { width:28px; height:20px; gap:4px; z-index:2200; }
   .hamburger span { height:3px; }
-  #submenuContainer { position:fixed; top:0; right:-100%; width:80%; height:100%; padding:20px; background:#121315; z-index:2000; border-radius:0; overflow-y:auto; transition:right 0.3s ease;}
-  #submenuContainer.active { right:0; }
+
+  /* Мобильное меню открыто по умолчанию */
+  #submenuContainer {
+    right:0;
+    position:fixed;
+    top:0;
+    width:80%;
+    height:100%;
+    padding:20px;
+    background:#121315;
+    z-index:2000;
+    border-radius:0;
+    overflow-y:auto;
+    display:block;
+    transition:none;
+  }
+
   .menu-item { padding:12px 0; border-bottom:1px solid #333; color:#D8D8D5; }
-  .submenu { display:none; margin-top:6px; font-size:0.95rem; padding-left:12px; }
-  .submenu a { color:#ccc; margin:4px 0; }
-  .pakalpojumi-submenu { display:block; }
+  .submenu { display:block; margin-top:6px; font-size:0.95rem; padding-left:12px; }
   .pakalpojumi-submenu .pakalpojumi-list li { font-size:0.9rem; margin-bottom:6px; }
 
   .modal { z-index:2500; }
@@ -125,14 +138,12 @@ header {
   .section-title { font-size:1.6rem; margin:24px 0 12px; }
   .section-description { font-size:1rem; line-height:1.4; margin:0 0 12px 0; }
   .services-list li { font-size:0.95rem; }
-  .pakalpojumi-submenu .pakalpojumi-list li { font-size:0.9rem; }
-  .hero { height:45vw; max-height:50vh; min-height:180px; }
+  .hero { height:45vw; max-height:50vh; min-height:180px; margin:0; padding:0; }
   .footer-slogan { font-size:clamp(0.95rem,4.5vw,1.2rem); padding:0 8px; }
   .footer .contact a { font-size:clamp(0.75rem,4vw,0.9rem); }
   .footer .contact i { font-size:clamp(0.85rem,4vw,1rem); }
 }
 
-/* Адаптивность для чуть меньших экранов */
 @media(max-width:400px){
   .hero { height:50vw; max-height:40vh; min-height:180px; }
   .footer-slogan { font-size:clamp(0.95rem,5vw,1.3rem); padding:0 8px; }
@@ -183,12 +194,10 @@ header {
   </div>
 </header>
 
-<!-- HERO -->
 <section class="hero">
   <img src="photo/baneris7.jpg" alt="GDesign" class="hero-image">
 </section>
 
-<!-- GALLERY -->
 <section class="gallery-section">
   <p class="section-description">
     Radām unikālas tīmekļa vietnes no idejas līdz gatavam risinājumam
@@ -243,7 +252,6 @@ header {
   </div>
 </section>
 
-<!-- MODAL -->
 <div class="modal" id="imageModal">
   <span class="close-btn">X</span>
   <span class="nav-btn prev-btn">←</span>
@@ -254,7 +262,6 @@ header {
   <div class="dots-container" id="dotsContainer"></div>
 </div>
 
-<!-- FOOTER -->
 <footer class="footer">
   <p class="footer-slogan">Radām kopā - no idejas līdz rezultātam!</p>
   <div class="contact">
@@ -272,13 +279,15 @@ const kontaktiSub = document.getElementById('kontaktiSub');
 const pakalpojumiBtn = document.getElementById('pakalpojumiBtn');
 const pakalpojumiSub = document.getElementById('pakalpojumiSub');
 
+if(window.innerWidth <= 576){
+  submenuContainer.classList.add('active');
+  kontaktiSub.style.display='block';
+  pakalpojumiSub.style.display='block';
+}
+
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
-  if(window.innerWidth <= 576){
-    submenuContainer.classList.toggle('active');
-    kontaktiSub.style.display='none';
-    pakalpojumiSub.style.display='none';
-  } else {
+  if(window.innerWidth > 576){
     submenuContainer.style.display = submenuContainer.style.display==='block'?'none':'block';
   }
 });
