@@ -52,6 +52,9 @@
     .language-selector {
       position: relative;
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
     }
     .language-icon {
       color: var(--blue);
@@ -60,6 +63,12 @@
     }
     .language-icon:hover {
       color: var(--blue);
+    }
+    .current-lang {
+      color: var(--contact-color);
+      font-size: 1rem;
+      font-weight: 500;
+      text-transform: uppercase;
     }
     .language-dropdown {
       display: none;
@@ -178,11 +187,11 @@
     .gallery-section {
       padding: 20px 20px 40px;
       background: #28292B;
-      text-align: left;
+      text-align: justify;
     }
     .section-description {
       font-size: 1.2rem;
-      color:  #D8D8D5;
+      color: #D8D8D5;
       line-height: 1.45;
       text-align: justify;
       margin-bottom: 14px;
@@ -204,7 +213,7 @@
     }
     .services-list li {
       font-size: 1.2rem;
-      color:  #D8D8D5;
+      color: #D8D8D5;
       margin-bottom: 12px;
       display: flex;
       align-items: flex-start;
@@ -456,6 +465,7 @@
     <div class="header-right">
       <div class="language-selector">
         <i class="fas fa-globe language-icon"></i>
+        <span class="current-lang">LV</span>
         <div class="language-dropdown">
           <a href="#" data-lang="lv">Latviešu</a>
           <a href="#" data-lang="ru">Русский</a>
@@ -557,7 +567,7 @@
   </div>
   <!-- FOOTER -->
   <footer class="footer">
-    <p class="footer-slogan" data-key="slogan">Mūsu dizains – tava vizītkarte!</p>
+    <p class="footer-slogan" data-key="slogan">Radām kopā-no idejas līdz rezultātam!</p>
     <div class="contact">
       <a href="tel:+37126747899"><i class="fas fa-phone"></i>+37126747899</a>
       <a href="mailto:galasmail@inbox.lv"><i class="fas fa-envelope"></i> galasmail@inbox.lv</a>
@@ -633,7 +643,6 @@
         menu_service4: 'Guaranteed website stability and efficient operation'
       }
     };
-
     // Existing modal script...
     const modal = document.getElementById('imageModal');
     const modalImg = document.getElementById('modalImage');
@@ -731,22 +740,18 @@
       isMouseOverModal = false;
       if (!userInteracted && modal.style.display === 'flex') startSlideshow();
     });
-
     // New script for hamburger and language
     const hamburger = document.querySelector('.hamburger');
     const menu = document.querySelector('.menu');
     const languageSelector = document.querySelector('.language-selector');
     const menuTitles = document.querySelectorAll('.menu-title');
-
     hamburger.addEventListener('click', () => {
       hamburger.classList.toggle('active');
       menu.classList.toggle('active');
     });
-
     languageSelector.addEventListener('click', () => {
       languageSelector.classList.toggle('active');
     });
-
     menuTitles.forEach(title => {
       title.addEventListener('click', () => {
         const submenu = title.nextElementSibling;
@@ -755,7 +760,6 @@
         }
       });
     });
-
     // Close menus on outside click
     document.addEventListener('click', (e) => {
       if (!hamburger.contains(e.target) && !menu.contains(e.target)) {
@@ -766,7 +770,6 @@
         languageSelector.classList.remove('active');
       }
     });
-
     // Language switching
     document.querySelectorAll('.language-dropdown a').forEach(a => {
       a.addEventListener('click', (e) => {
@@ -776,7 +779,6 @@
         setLanguage(lang);
       });
     });
-
     function setLanguage(lang) {
       document.documentElement.lang = lang;
       document.querySelectorAll('[data-key]').forEach(el => {
@@ -784,8 +786,8 @@
           el.textContent = translations[lang][el.dataset.key];
         }
       });
+      document.querySelector('.current-lang').textContent = lang.toUpperCase();
     }
-
     // Set initial language
     const savedLang = localStorage.getItem('lang') || 'lv';
     setLanguage(savedLang);
