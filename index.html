@@ -15,7 +15,6 @@
 }
 * { margin:0; padding:0; box-sizing:border-box; }
 body { font-family:'Montserrat', sans-serif; background:var(--bg); color:var(--text); }
-
 /* HEADER */
 header {
   position: relative;
@@ -34,14 +33,12 @@ header {
 .lang-dropdown { display:none; position:absolute; top:30px; left:0; background:#1c1d1f; border:1px solid #333; border-radius:8px; overflow:hidden; z-index:200;}
 .lang-dropdown button { display:block; background:none; border:none; color:#ddd; padding:8px 12px; cursor:pointer; font-size:0.95rem; text-align:left;}
 .lang-dropdown button:hover { background:var(--blue); color:#fff; }
-
 /* Гамбургер */
 .hamburger { display:flex; flex-direction:column; justify-content:center; cursor:pointer; width:32px; height:24px; gap:6px;}
 .hamburger span { display:block; width:100%; height:3px; background:var(--contact-color); transition:all 0.3s ease;}
 .hamburger.active span:nth-child(1) { transform:translateY(9px) rotate(45deg);}
 .hamburger.active span:nth-child(2) { opacity:0;}
 .hamburger.active span:nth-child(3) { transform:translateY(-9px) rotate(-45deg); }
-
 /* Подменю */
 #submenuContainer {
   position:absolute;
@@ -61,11 +58,9 @@ header {
 .submenu a:hover { color:var(--blue); }
 .pakalpojumi-submenu { font-size: 0.95rem; line-height: 1.35; padding-left: 0; }
 .pakalpojumi-submenu .pakalpojumi-list li { font-size: 0.95rem; margin-bottom: 6px; }
-
 /* HERO */
-.hero { height:56vw; max-height:70vh; min-height:300px; overflow:hidden; position:relative; background:#000; margin:0; padding:0; }
-.hero-image { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
-
+.hero { max-height:70vh; min-height:300px; position:relative; background:#000; margin:0; padding:0; overflow:hidden; }
+.hero-image { width:100%; height:auto; object-fit:contain; object-position:center; display:block; }
 /* GALLERY SECTION */
 .gallery-section { padding:20px 40px 40px; background:#28292B; }
 .section-description { font-size:1.2rem; color:#D8D8D5; line-height:1.45; text-align:justify; margin-bottom:14px; font-weight:400; }
@@ -80,7 +75,6 @@ header {
 .project-item:hover .project-card { transform:translateY(-15px); box-shadow:0 25px 50px rgba(0,0,0,.15);}
 .main-photo { width:100%; aspect-ratio:3/4; object-fit:cover; object-position:center; transition:transform .4s ease; display:block; }
 .main-photo:hover { transform:scale(1.04); }
-
 /* MODAL */
 .modal { display:none; position:fixed; z-index:2500; left:0; top:0; width:100%; height:100%; background:rgba(0,0,0,.97); justify-content:center; align-items:center; padding:20px; flex-direction:column; gap:15px; }
 .modal-content { max-width:92%; max-height:82vh; border-radius:18px; overflow:hidden; box-shadow:0 0 60px rgba(255,107,0,.25); border:1px solid #444; position:relative; }
@@ -95,27 +89,23 @@ header {
 .dot { width:12px; height:12px; border-radius:50%; background:#555; cursor:pointer; transition:all .3s ease; }
 .dot.active { background:var(--blue); box-shadow:0 0 8px rgba(0,123,255,.6);}
 .dot:hover { background:#0056b3;}
-
 /* FOOTER */
 .footer { padding:22px 20px; background:#121315; border-top:1px solid rgba(46,92,153,0.6); display:flex; flex-direction:column; justify-content:center; align-items:center; gap:10px; text-align:center;}
 .footer-slogan { color:var(--contact-color); line-height:1.4; font-weight:500; margin:0; padding:0 16px; font-size:clamp(1.1rem,4.2vw,1.6rem);}
 .footer .contact { display:flex; flex-direction:column; align-items:center; gap:8px; max-width:300px;}
 .footer .contact a { color:#D8D8D5; text-decoration:none; display:flex; align-items:center; gap:8px; transition:0.3s; font-size:clamp(0.85rem,3vw,1rem); justify-content:center;}
 .footer .contact i { color:var(--blue); font-size:clamp(1rem,3vw,1.1rem);}
-
 /* ======================= Мобильная адаптация ======================= */
 @media(max-width:576px){
   body, .gallery-section, .footer { padding-left:10px !important; padding-right:10px !important; }
-
   header { flex-direction: row; justify-content: space-between; align-items: center; height: auto; padding: 8px 12px; }
   .logo-img { max-width:120px; height:40px; }
   .lang-icon { gap:6px; }
   .hamburger { width:28px; height:20px; gap:4px; z-index:2200; }
   .hamburger span { height:3px; }
-
   /* Мобильное меню скрыто по умолчанию */
   #submenuContainer {
-    right:-100%;  /* скрыто за экраном */
+    right:-100%; /* скрыто за экраном */
     position:fixed;
     top:0;
     width:80%;
@@ -128,26 +118,23 @@ header {
     transition:right 0.3s ease;
   }
   #submenuContainer.active { right:0; } /* при клике — показываем */
-
   .menu-item { padding:12px 0; border-bottom:1px solid #333; color:#D8D8D5; }
   .submenu { display:none; margin-top:6px; font-size:0.95rem; padding-left:12px; }
   .pakalpojumi-submenu .pakalpojumi-list li { font-size:0.9rem; margin-bottom:6px; }
-
   .modal { z-index:2500; }
   .close-btn, .nav-btn { z-index:2600; width:42px; height:42px; font-size:20px; }
   .gallery { grid-template-columns:1fr; gap:16px; margin-top:24px; }
   .section-title { font-size:1.6rem; margin:24px 0 12px; }
   .section-description { font-size:1rem; line-height:1.4; margin:0 0 12px 0; }
   .services-list li { font-size:0.95rem; }
-  .hero { height:45vw; max-height:50vh; min-height:180px; margin:0; padding:0; }
+  .hero { max-height:50vh; min-height:180px; margin:0; padding:0; overflow:visible; }
+  .hero-image { width:100%; height:auto; object-fit:contain; }
   .footer-slogan { font-size:clamp(0.95rem,4.5vw,1.2rem); padding:0 8px; }
   .footer .contact a { font-size:clamp(0.75rem,4vw,0.9rem); }
   .footer .contact i { font-size:clamp(0.85rem,4vw,1rem); }
 }
-
-
 @media(max-width:400px){
-  .hero { height:50vw; max-height:40vh; min-height:180px; }
+  .hero { max-height:40vh; min-height:180px; }
   .footer-slogan { font-size:clamp(0.95rem,5vw,1.3rem); padding:0 8px; }
 }
 </style>
@@ -195,11 +182,9 @@ header {
     </div>
   </div>
 </header>
-
 <section class="hero">
   <img src="photo/baneris7.jpg" alt="GDesign" class="hero-image">
 </section>
-
 <section class="gallery-section">
   <p class="section-description">
     Radām unikālas tīmekļa vietnes no idejas līdz gatavam risinājumam
@@ -253,7 +238,6 @@ header {
     </div>
   </div>
 </section>
-
 <div class="modal" id="imageModal">
   <span class="close-btn">X</span>
   <span class="nav-btn prev-btn">←</span>
@@ -263,7 +247,6 @@ header {
   </div>
   <div class="dots-container" id="dotsContainer"></div>
 </div>
-
 <footer class="footer">
   <p class="footer-slogan">Radām kopā - no idejas līdz rezultātam!</p>
   <div class="contact">
@@ -271,7 +254,6 @@ header {
     <a href="mailto:galasmail@inbox.lv"><i class="fas fa-envelope"></i> galasmail@inbox.lv</a>
   </div>
 </footer>
-
 <script>
 // Гамбургер
 const hamburger = document.getElementById('hamburger');
@@ -280,13 +262,11 @@ const kontaktiBtn = document.getElementById('kontaktiBtn');
 const kontaktiSub = document.getElementById('kontaktiSub');
 const pakalpojumiBtn = document.getElementById('pakalpojumiBtn');
 const pakalpojumiSub = document.getElementById('pakalpojumiSub');
-
 if(window.innerWidth <= 576){
   submenuContainer.classList.add('active');
   kontaktiSub.style.display='block';
   pakalpojumiSub.style.display='block';
 }
-
 // Гамбургер
 hamburger.addEventListener('click', () => {
   hamburger.classList.toggle('active');
@@ -298,8 +278,6 @@ hamburger.addEventListener('click', () => {
     submenuContainer.style.display = submenuContainer.style.display==='block'?'none':'block';
   }
 });
-
-
 kontaktiBtn.addEventListener('click', () => {
   const isVisible = kontaktiSub.style.display==='block';
   kontaktiSub.style.display = isVisible?'none':'block';
@@ -310,7 +288,6 @@ pakalpojumiBtn.addEventListener('click', () => {
   pakalpojumiSub.style.display = isVisible?'none':'block';
   kontaktiSub.style.display='none';
 });
-
 window.addEventListener('keydown', e => {
   if(e.key==='Escape'){
     hamburger.classList.remove('active');
@@ -319,13 +296,11 @@ window.addEventListener('keydown', e => {
     pakalpojumiSub.style.display='none';
   }
 });
-
 // Языки
 const langIcon = document.getElementById('langIcon');
 const langDropdown = document.getElementById('langDropdown');
 langIcon.addEventListener('click', e=>{ e.stopPropagation(); langDropdown.style.display = langDropdown.style.display==='block'?'none':'block'; });
 document.addEventListener('click', ()=>{ langDropdown.style.display='none'; });
-
 // MODAL
 const modal = document.getElementById('imageModal');
 const modalImg = document.getElementById('modalImage');
@@ -334,43 +309,36 @@ const closeBtn = document.querySelector('.close-btn');
 const prevBtn = document.querySelector('.prev-btn');
 const nextBtn = document.querySelector('.next-btn');
 let currentImages=[], currentIndex=0, slideshowInterval=null, userInteracted=false;
-
 document.querySelectorAll('.project-item').forEach(item=>{
   const main=item.querySelector('.main-photo');
   const images=item.dataset.images.split(',');
   main.onclick=e=>{ e.preventDefault(); openModal(images,0); }
 });
-
-function openModal(imgs,idx){ 
-  currentImages=imgs; currentIndex=idx; modal.style.display='flex'; document.body.style.overflow='hidden'; 
-  renderDots(); showImg(idx,false); startSlideshow(); 
+function openModal(imgs,idx){
+  currentImages=imgs; currentIndex=idx; modal.style.display='flex'; document.body.style.overflow='hidden';
+  renderDots(); showImg(idx,false); startSlideshow();
 }
-
-function showImg(i,isUserAction=false){ 
-  if(i<0)i=currentImages.length-1; if(i>=currentImages.length)i=0; currentIndex=i; 
-  if(isUserAction)userInteracted=true; 
-  const newImg=new Image(); newImg.onload=()=>{ modalImg.src=newImg.src; updateDots(); }; newImg.src=currentImages[i]; 
+function showImg(i,isUserAction=false){
+  if(i<0)i=currentImages.length-1; if(i>=currentImages.length)i=0; currentIndex=i;
+  if(isUserAction)userInteracted=true;
+  const newImg=new Image(); newImg.onload=()=>{ modalImg.src=newImg.src; updateDots(); }; newImg.src=currentImages[i];
 }
-
-function renderDots(){ 
-  dotsContainer.innerHTML=''; 
-  currentImages.forEach((_,i)=>{ 
-    const d=document.createElement('div'); d.className='dot'; 
-    d.onclick=()=>{ showImg(i,true); startSlideshow(); }; 
-    dotsContainer.appendChild(d); 
-  }); 
-  updateDots(); 
+function renderDots(){
+  dotsContainer.innerHTML='';
+  currentImages.forEach((_,i)=>{
+    const d=document.createElement('div'); d.className='dot';
+    d.onclick=()=>{ showImg(i,true); startSlideshow(); };
+    dotsContainer.appendChild(d);
+  });
+  updateDots();
 }
-
-function updateDots(){ 
-  dotsContainer.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===currentIndex)); 
+function updateDots(){
+  dotsContainer.querySelectorAll('.dot').forEach((d,i)=>d.classList.toggle('active',i===currentIndex));
 }
-
-function startSlideshow(){ 
-  clearInterval(slideshowInterval); 
-  slideshowInterval=setInterval(()=>{ if(!userInteracted) showImg(currentIndex+1,false); },2000); 
+function startSlideshow(){
+  clearInterval(slideshowInterval);
+  slideshowInterval=setInterval(()=>{ if(!userInteracted) showImg(currentIndex+1,false); },2000);
 }
-
 closeBtn.onclick=()=>{ modal.style.display='none'; document.body.style.overflow='auto'; clearInterval(slideshowInterval); }
 prevBtn.onclick=()=>{ showImg(currentIndex-1,true); startSlideshow(); }
 nextBtn.onclick=()=>{ showImg(currentIndex+1,true); startSlideshow(); }
@@ -378,4 +346,3 @@ window.onclick=e=>{ if(e.target===modal) closeBtn.click(); }
 </script>
 </body>
 </html>
-
