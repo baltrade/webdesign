@@ -709,7 +709,7 @@
       stopSlideshow();
       slideshowInterval = setInterval(() => {
         if (!userInteracted) showImg(currentIndex + 1, false);
-      }, 2000);
+      }, 1000);
     }
     function stopSlideshow() {
       if (slideshowInterval) clearInterval(slideshowInterval);
@@ -795,6 +795,7 @@
   </script>
 </body>
 </html>
+
 
 
 
